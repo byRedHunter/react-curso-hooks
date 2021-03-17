@@ -1,13 +1,105 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+	--color-light: #f7f7f7;
+	--color-dark: #100303;
+	--color-primary: #72e7ca;
+	--color-secondary: #95389e;
+	--color-shadow: #10030361;
+}
+
+body {
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	background: var(--color-secondary);
+	color: var(--color-light);
+	transition-property: color, background-color;
+	transition: 0.3s linear;
+}
+
+.container {
+	width: 90%;
+	padding: 10px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+button {
+	padding: 15px 30px;
+	border: none;
+	background: var(--color-primary);
+	color: var(--color-dark);
+	border-radius: 5px;
+	margin-top: 20px;
+	outline: none;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.characters {
+	margin-top: 40px;
+	display: grid;
+	grid-template: auto / 1fr;
+	gap: 40px;
+}
+
+.character {
+	position: relative;
+	background: transparent;
+	border-radius: 5px;
+	color: var(--color-dark);
+	width: 100%;
+}
+.character img {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	display: block;
+	height: 150px;
+	width: 150px;
+	object-fit: cover;
+	border: 5px solid var(--color-primary);
+	border-radius: 50%;
+	box-shadow: 0 0 10px 0 var(--color-shadow);
+	z-index: 10;
+}
+.character-info {
+	position: relative;
+	margin-top: 100px;
+	background: var(--color-primary);
+	padding: 20px 5px;
+	padding-top: 70px;
+	text-align: center;
+	border-radius: 8px;
+}
+.character-info h3 {
+	color: var(--color-secondary);
+	margin-bottom: 10px;
+}
+
+@media screen and (min-width: 500px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.characters {
+		grid-template: auto / repeat(2, 1fr);
+	}
+}
+@media screen and (min-width: 900px) {
+	.characters {
+		grid-template: auto / repeat(3, 1fr);
+	}
 }
