@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer, useMemo } from 'react'
+import React, { useEffect, useState, useReducer, useMemo, useRef } from 'react'
 import { Character } from './Character'
 import { Favorite } from './Favorite'
 
@@ -34,6 +34,7 @@ export const Characters = () => {
 	const [favorites, dispatch] = useReducer(favoriteReducer, initialState)
 
 	const [search, setSearch] = useState('')
+	const searchInput = useRef(null)
 
 	useEffect(() => {
 		localStorage.setItem('favorites', JSON.stringify(favorites.favorites))
@@ -48,8 +49,8 @@ export const Characters = () => {
 			})
 	}, [])
 
-	const handleSearch = ({ target }) => {
-		setSearch(target.value)
+	const handleSearch = () => {
+		setSearch(searchInput.current.value)
 	}
 
 	const validateItem = (data) => {
@@ -91,6 +92,7 @@ export const Characters = () => {
 				<div className='search'>
 					<label htmlFor='search'>Filtrar Personajes</label>
 					<input
+						ref={searchInput}
 						type='text'
 						value={search}
 						onChange={handleSearch}
