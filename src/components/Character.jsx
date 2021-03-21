@@ -1,6 +1,13 @@
 import React from 'react'
 
-export const Character = ({ name, url, species, status }) => {
+export const Character = ({
+	name,
+	url,
+	species,
+	status,
+	data,
+	handleClick,
+}) => {
 	return (
 		<article className='character'>
 			<img src={url} alt={name} />
@@ -12,6 +19,10 @@ export const Character = ({ name, url, species, status }) => {
 				<p>
 					<strong>Status: </strong> {status}{' '}
 				</p>
+
+				<button className='button-card' onClick={() => handleClick(data)}>
+					Agregar Fovorito
+				</button>
 			</div>
 		</article>
 	)

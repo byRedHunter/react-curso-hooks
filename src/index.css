@@ -41,6 +41,10 @@ button {
 	letter-spacing: 1px;
 	cursor: pointer;
 }
+.button-card {
+	margin-top: 2rem;
+	background: var(--color-light);
+}
 
 .header {
 	display: flex;
@@ -87,6 +91,56 @@ button {
 .character-info h3 {
 	color: var(--color-secondary);
 	margin-bottom: 10px;
+}
+
+.list-favorites {
+	display: block;
+	width: 100%;
+	margin-bottom: 40px;
+	margin-top: 20px;
+}
+@media screen and (min-width: 600px) {
+	.list-favorites {
+		display: grid;
+		grid-template: auto / repeat(2, 1fr);
+	}
+}
+.list-favorites-item {
+	border: 1px solid gray;
+	background: var(--color-shadow);
+	min-height: 80px;
+	display: grid;
+	grid-template: 1fr / 1fr 40px;
+}
+.list-favorites-item img {
+	display: block;
+	height: 50px;
+	width: 50px;
+	object-fit: cover;
+	border-radius: 50%;
+	box-shadow: 0 0 10px 0 var(--color-primary);
+}
+.list-favorites-item .content {
+	display: flex;
+	align-items: center;
+	column-gap: 15px;
+	height: 100%;
+	padding-left: 15px;
+}
+.list-favorites-item .content p {
+	font-size: 14px;
+}
+.list-favorites-item .close {
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	transition: background 0.3s linear;
+}
+.list-favorites-item .close:hover {
+	background: #1003039c;
 }
 
 @media screen and (min-width: 500px) {
