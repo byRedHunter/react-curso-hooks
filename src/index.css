@@ -29,7 +29,7 @@ body {
 }
 
 button {
-	padding: 15px 30px;
+	padding: 10px 25px;
 	border: none;
 	background: var(--color-primary);
 	color: var(--color-dark);
@@ -50,6 +50,20 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.search {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.search input {
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	margin-top: 5px;
 }
 
 .characters {

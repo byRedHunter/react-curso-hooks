@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from 'react'
+import React, { useEffect, useState, useReducer, useMemo } from 'react'
 import { Character } from './Character'
 import { Favorite } from './Favorite'
 
@@ -33,6 +33,8 @@ export const Characters = () => {
 
 	const [favorites, dispatch] = useReducer(favoriteReducer, initialState)
 
+	const [search, setSearch] = useState('')
+
 	useEffect(() => {
 		localStorage.setItem('favorites', JSON.stringify(favorites.favorites))
 	}, [favorites])
@@ -45,6 +47,10 @@ export const Characters = () => {
 				setIsLoading(false)
 			})
 	}, [])
+
+	const handleSearch = ({ target }) => {
+		setSearch(target.value)
+	}
 
 	const validateItem = (data) => {
 		let state = false
@@ -66,11 +72,35 @@ export const Characters = () => {
 		dispatch({ type: 'DELETE_TO_FAVORITE', payload: id })
 	}
 
+	/* const filteredUsers = characters.filter((user) =>
+		user.name.toLowerCase().includes(search.toLowerCase())
+	) */
+	const filteredUsers = useMemo(
+		() =>
+			characters.filter((user) =>
+				user.name.toLowerCase().includes(search.toLowerCase())
+			),
+		[characters, search]
+	)
+
 	return (
 		<div className='container'>
 			{isLoading && <div className='loading'>Cargando...</div>}
 
-			{favorites.favorites.length > 0 && (
+			{!isLoading && (
+				<div className='search'>
+					<label htmlFor='search'>Filtrar Personajes</label>
+					<input
+						type='text'
+						value={search}
+						onChange={handleSearch}
+						id='search'
+						placeholder='Buscar...'
+					/>
+				</div>
+			)}
+
+			{favorites.favorites.length > 0 && !isLoading && (
 				<>
 					<h3>Mis Favoritos</h3>
 					<ul className='list-favorites'>
@@ -88,7 +118,7 @@ export const Characters = () => {
 			)}
 
 			<section className='characters'>
-				{characters.map((character) => (
+				{filteredUsers.map((character) => (
 					<Character
 						key={character.id}
 						name={character.name}
