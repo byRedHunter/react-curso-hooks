@@ -1,6 +1,14 @@
-import React, { useEffect, useState, useReducer, useMemo, useRef } from 'react'
+import React, {
+	useEffect,
+	useState,
+	useReducer,
+	useMemo,
+	useRef,
+	useCallback,
+} from 'react'
 import { Character } from './Character'
 import { Favorite } from './Favorite'
+import { Search } from './Search'
 
 const initialState = {
 	favorites: JSON.parse(localStorage.getItem('favorites')) || [],
@@ -49,9 +57,12 @@ export const Characters = () => {
 			})
 	}, [])
 
-	const handleSearch = () => {
+	/* const handleSearch = () => {
 		setSearch(searchInput.current.value)
-	}
+	} */
+	const handleSearch = useCallback(() => {
+		setSearch(searchInput.current.value)
+	}, [])
 
 	const validateItem = (data) => {
 		let state = false
@@ -89,17 +100,11 @@ export const Characters = () => {
 			{isLoading && <div className='loading'>Cargando...</div>}
 
 			{!isLoading && (
-				<div className='search'>
-					<label htmlFor='search'>Filtrar Personajes</label>
-					<input
-						ref={searchInput}
-						type='text'
-						value={search}
-						onChange={handleSearch}
-						id='search'
-						placeholder='Buscar...'
-					/>
-				</div>
+				<Search
+					search={search}
+					handleSearch={handleSearch}
+					searchInput={searchInput}
+				/>
 			)}
 
 			{favorites.favorites.length > 0 && !isLoading && (
