@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-curso-hooks/static/css/main.328f69da.chunk.css",
+    "main.js": "/react-curso-hooks/static/js/main.9ad0550a.chunk.js",
+    "main.js.map": "/react-curso-hooks/static/js/main.9ad0550a.chunk.js.map",
+    "runtime-main.js": "/react-curso-hooks/static/js/runtime-main.0bae566e.js",
+    "runtime-main.js.map": "/react-curso-hooks/static/js/runtime-main.0bae566e.js.map",
+    "static/js/2.c048df88.chunk.js": "/react-curso-hooks/static/js/2.c048df88.chunk.js",
+    "static/js/2.c048df88.chunk.js.map": "/react-curso-hooks/static/js/2.c048df88.chunk.js.map",
+    "index.html": "/react-curso-hooks/index.html",
+    "static/css/main.328f69da.chunk.css.map": "/react-curso-hooks/static/css/main.328f69da.chunk.css.map",
+    "static/js/2.c048df88.chunk.js.LICENSE.txt": "/react-curso-hooks/static/js/2.c048df88.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0bae566e.js",
+    "static/js/2.c048df88.chunk.js",
+    "static/css/main.328f69da.chunk.css",
+    "static/js/main.9ad0550a.chunk.js"
+  ]
+}
