@@ -6,6 +6,7 @@ import React, {
 	useRef,
 	useCallback,
 } from 'react'
+import { useCharacters } from '../hooks/useCharacters'
 import { Character } from './Character'
 import { Favorite } from './Favorite'
 import { Search } from './Search'
@@ -36,8 +37,11 @@ const favoriteReducer = (state, action) => {
 }
 
 export const Characters = () => {
-	const [isLoading, setIsLoading] = useState(true)
-	const [characters, setCharacters] = useState([])
+	/* const [isLoading, setIsLoading] = useState(true)
+	const [characters, setCharacters] = useState([]) */
+	const { isLoading, characters } = useCharacters(
+		'https://rickandmortyapi.com/api/character/'
+	)
 
 	const [favorites, dispatch] = useReducer(favoriteReducer, initialState)
 
@@ -47,15 +51,6 @@ export const Characters = () => {
 	useEffect(() => {
 		localStorage.setItem('favorites', JSON.stringify(favorites.favorites))
 	}, [favorites])
-
-	useEffect(() => {
-		fetch('https://rickandmortyapi.com/api/character/')
-			.then((response) => response.json())
-			.then((data) => {
-				setCharacters(data.results)
-				setIsLoading(false)
-			})
-	}, [])
 
 	/* const handleSearch = () => {
 		setSearch(searchInput.current.value)
